@@ -25,16 +25,16 @@ while(cap.isOpened()):
     hsv_image_blurred = cv2.GaussianBlur(hsv_image,(5,5),0)
 
 #low and high values   
-    low_r = cv2.getTrackbarPos('low_R','image')
-    low_g = cv2.getTrackbarPos('low_G','image')
-    low_b = cv2.getTrackbarPos('low_B','image')
+    low_h = cv2.getTrackbarPos('low_H','image')
+    low_s = cv2.getTrackbarPos('low_S','image')
+    low_v = cv2.getTrackbarPos('low_V','image')
 
-    high_r = cv2.getTrackbarPos('high_R','image')
-    high_g = cv2.getTrackbarPos('high_G','image')
-    high_b = cv2.getTrackbarPos('high_B','image')
+    high_h = cv2.getTrackbarPos('high_H','image')
+    high_s = cv2.getTrackbarPos('high_S','image')
+    high_v = cv2.getTrackbarPos('high_V','image')
     
 #image preprocessing
-    filtered_image = cv2.inRange(image,np.array([low_b,low_g,low_r]),np.array([high_b,high_g,high_r])) 
+    filtered_image = cv2.inRange(image,np.array([low_h,low_s,low_v]),np.array([high_h,high_s,high_v])) 
     closed_filtered_image = cv2.morphologyEx(filtered_image,cv2.MORPH_OPEN,kernel)
     closed_filtered_image = cv2.morphologyEx(filtered_image,cv2.MORPH_OPEN,kernel)
     finalThreshold = cv2.adaptiveThreshold(closed_filtered_image,255,1,1,11,2)
